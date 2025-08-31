@@ -1,3 +1,9 @@
 <resources>
 	<string name="app_name">Bepilot</string>
+	<string name="grant_button">권한 허용</string>
+	<string name="notification_access_granted">알림 접근 권한이 부여됨.</string>
+	<string name="notification_access_not_granted">알림 접근 권한이 필요합니다.</string>
+	<string name="warning_turnoff">스마트폰 사용 시간이 10분을 초과할 경우 경고</string>
+	<string name="warning_earphone">이어폰을 연결할 경우 경고</string>
+	<string name="warning_volume">이어폰 음량이 안전범위를 초과할 경우 경고</string>
 </resources>
