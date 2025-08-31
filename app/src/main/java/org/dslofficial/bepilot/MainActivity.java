@@ -131,8 +131,8 @@ public class MainActivity extends AppCompatActivity {
                         if (e_warning_volume && is_earphone_connected) {
                             int currentVolume = audioManager.getStreamVolume(AudioManager.STREAM_MUSIC);
                             int maxVolume = audioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC);
-                            if (maxVolume != 0 && ((float) currentVolume / maxVolume) >= 0.6f) {
-                                sendNotification(getApplicationContext(), "이어폰 음량이 안전범위를 초과하였습니다.", "높은 볼륨은 청력을 손상시킬 수 존재합니다. 즉시 음량을 줄이십시오.");
+                            if (maxVolume != 0 && ((float) currentVolume / maxVolume) >= 0.4f) {
+                                sendNotification(getApplicationContext(), "이어폰 음량이 안전범위를 초과하였습니다.", "높은 볼륨은 청력을 손상시킬 수 있습니다. 즉시 음량을 줄이십시오.");
                             }
                         }
                     }
@@ -148,8 +148,9 @@ public class MainActivity extends AppCompatActivity {
         super.onResume();
         // Re-check notification permission when the activity resumes
         changeNotificationPermissionStatus(ContextCompat.checkSelfPermission(this, Manifest.permission.POST_NOTIFICATIONS) == PackageManager.PERMISSION_GRANTED);
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.BLUETOOTH) != PackageManager.PERMISSION_GRANTED ||
-                ContextCompat.checkSelfPermission(this, Manifest.permission.BLUETOOTH_ADMIN) != PackageManager.PERMISSION_GRANTED) {
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.BLUETOOTH) != PackageManager.PERMISSION_GRANTED &&
+                ContextCompat.checkSelfPermission(this, Manifest.permission.BLUETOOTH_ADMIN) != PackageManager.PERMISSION_GRANTED &&
+                ContextCompat.checkSelfPermission(this, Manifest.permission.BLUETOOTH_CONNECT) != PackageManager.PERMISSION_GRANTED) {
             warning_earphone.setChecked(false);
         }
         loadSwitchStates();
